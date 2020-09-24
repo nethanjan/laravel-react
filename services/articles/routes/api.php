@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::apiResource('/author', 'App\Http\Controllers\AuthorController');
+
+Route::apiResource('/article', 'App\Http\Controllers\ArticleController');

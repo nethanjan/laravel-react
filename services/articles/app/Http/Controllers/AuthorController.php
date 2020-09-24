@@ -18,7 +18,7 @@ class AuthorController extends Controller
     public function store(Request $request): AuthorResource
     {
         $request->validate([
-            'name'  => 'required',
+            'name'  => 'required|max:255',
         ]);
 
         $author = Author::create($request->all());
@@ -27,7 +27,7 @@ class AuthorController extends Controller
     }
 
     /**
-     * Get an Author
+     * Get Author
      *
      * @param Author $author
      * @return AuthorResource
@@ -57,7 +57,7 @@ class AuthorController extends Controller
     public function update(Author $author, Request $request): AuthorResource
     {
         $request->validate([
-            'name'  => 'required',
+            'name'  => 'required|max:255',
         ]);
 
         $author->update($request->all());
