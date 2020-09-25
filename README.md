@@ -2,16 +2,30 @@
 
 ## Laravel API
 
-Path : services/articles
+go to path : services/articles
 
 ### Set up laravel api
 
 chmod 755 sotage/ bootstrap/cache
 php artisan key:generate
 
-Create .env file by .env.exmaple and add your enviroment variables for the database configarations
+create .env file by .env.exmaple and add your enviroment variables for the database configarations
 
 php artisan migrate
+
+## React front-end
+
+go to path : services/web
+
+## Set up react app
+
+npm install
+npm start
+
+or if you prefer yarn
+
+yarn install
+yarn start
 
 ### Run laravel api
 
@@ -24,5 +38,5 @@ swagger project edit
 
 ## Run the database backup daily
 
-Add this to crontab
+add this to crontab
 0 2 \* \* \* articles_mysql_backup.sh
