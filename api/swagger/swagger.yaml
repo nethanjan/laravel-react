@@ -1,0 +1,506 @@
+swagger: "2.0"
+info:
+  description: This is a Laravel API
+  version: "1.0.0"
+  title: "Laravel"
+host: "oqq37kfdo1.execute-api.ap-south-1.amazonaws.com"
+schemes:
+  - http
+  - https
+basePath: /dev/api
+
+paths:
+  /author:
+    post:
+      tags:
+        - "author"
+      summary: "Add new Author"
+      description: "Returns a author object if success"
+      operationId: "addAuthor"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: 'body'
+          name: 'author object'
+          description: 'Author object that needs to be added to the store'
+          required: true
+          schema:
+            type: 'object'
+            properties:
+              name:
+                type: 'string'
+      responses:
+        200:
+          description: 'Operation successful'
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  name:
+                    type: string
+        400:
+          description: 'The given data was invalid'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+              errors:
+                type: object
+                properties:
+                  name:
+                    type: string
+        500:
+          description: 'Server error'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+    get:
+      tags:
+        - "author"
+      summary: "Get Authors"
+      description: "Returns a authors object with pagination if success"
+      operationId: "getAllAuthors"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: 'Operation successful'
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  name:
+                    type: string
+              links:
+                type: object
+                properties:
+                  first:
+                    type: string
+                  last:
+                    type: string
+                  prev:
+                    type: string
+                  next:
+                    type: string
+              meta:
+                type: object
+                properties:
+                  current_page:
+                    type: number
+                  from:
+                    type: number
+                  last_page:
+                    type: number
+                  links:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                      label:
+                        type: string
+                      active:
+                        type: boolean
+                  pathe:
+                    type: string
+                  per_name:
+                    type: number
+                  to:
+                    type: number
+                  total:
+                    type: number
+        500:
+          description: 'Server error'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+    
+  /author/{author_id}:              
+    get:
+      tags:
+        - "author"
+      summary: "Get Author"
+      description: "Returns a author object if success"
+      operationId: "getAuthor"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: 'path'
+          name: author_id
+          required: true
+          type: integer
+      responses:
+        200:
+          description: 'Operation successful'
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  name:
+                    type: string
+        404:
+          description: 'The given data was invalid'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+        500:
+          description: 'Server error'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+    put:
+      tags:
+        - "author"
+      summary: "Update Author"
+      description: "Returns a author object if success"
+      operationId: "updateAuthor"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: 'path'
+          name: author_id
+          required: true
+          type: integer
+      responses:
+        200:
+          description: 'Operation successful'
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  name:
+                    type: string
+        404:
+          description: 'The given data was invalid'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+        500:
+          description: 'Server error'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+    delete:
+      tags:
+        - "author"
+      summary: "Delete Author"
+      description: "Returns empty array if success"
+      operationId: "deleteAuthor"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: 'path'
+          name: author_id
+          required: true
+          type: integer
+      responses:
+        200:
+          description: 'Operation successful'
+          schema:
+            type: array
+            items:
+                type: string
+                
+  /article:                
+    post:
+      tags:
+        - "article"
+      summary: "Add new article"
+      description: "Returns a article object if success"
+      operationId: "addArticle"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: 'body'
+          name: 'body'
+          description: 'Article object to store'
+          required: true
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+              author_id:
+                type: integer
+              url:
+                type: string
+              content:
+                type: string
+      responses:
+        200:
+          description: 'Operation successful'
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  author:
+                    type: string
+                  content:
+                    type: string
+                  url:
+                    type: string
+                  createdAt:
+                    type: string
+        400:
+          description: 'The given data was invalid'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+              errors:
+                type: object
+                properties:
+                  name:
+                    type: string
+        500:
+          description: 'Server error'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+    get:
+      tags:
+        - "article"
+      summary: "Get Articles"
+      description: "Returns a articles object with pagination if success"
+      operationId: "getAllArticles"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: 'Operation successful'
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  title:
+                    type: string
+                  author:
+                    type: string
+                  content:
+                    type: string
+                  url:
+                    type: string
+                  createdAt:
+                    type: string
+              links:
+                type: object
+                properties:
+                  first:
+                    type: string
+                  last:
+                    type: string
+                  prev:
+                    type: string
+                  next:
+                    type: string
+              meta:
+                type: object
+                properties:
+                  current_page:
+                    type: number
+                  from:
+                    type: number
+                  last_page:
+                    type: number
+                  links:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                      label:
+                        type: string
+                      active:
+                        type: boolean
+                  pathe:
+                    type: string
+                  per_name:
+                    type: number
+                  to:
+                    type: number
+                  total:
+                    type: number
+        500:
+          description: 'Server error'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+  /article/{article_id}:
+    get:
+      tags:
+        - "article"
+      summary: "Get Article"
+      description: "Returns a article object if success"
+      operationId: "getArticle"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: 'path'
+          name: article_id
+          required: true
+          type: integer
+      responses:
+        200:
+          description: 'Operation successful'
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  title:
+                    type: string
+                  author:
+                    type: string
+                  content:
+                    type: string
+                  url:
+                    type: string
+                  createdAt:
+                    type: string
+        404:
+          description: 'The given data was invalid'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+        500:
+          description: 'Server error'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+    put:
+      tags:
+        - "article"
+      summary: "Update Article"
+      description: "Returns a artcile object if success"
+      operationId: "updateArticle"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: 'path'
+          name: article_id
+          required: true
+          type: integer
+      responses:
+        200:
+          description: 'Operation successful'
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  title:
+                    type: string
+                  author:
+                    type: string
+                  content:
+                    type: string
+                  url:
+                    type: string
+                  createdAt:
+                    type: string
+        404:
+          description: 'The given data was invalid'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+        500:
+          description: 'Server error'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string   
+    delete:
+      tags:
+        - "article"
+      summary: "Delete Article"
+      description: "Returns empty array if success"
+      operationId: "deleteArticle"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: article_id
+          in: path
+          required: true
+          type: integer
+      responses:
+        200:
+          description: 'Operation successful'
+          schema:
+            type: array
+            items:
+                type: string

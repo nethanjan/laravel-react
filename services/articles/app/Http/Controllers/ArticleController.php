@@ -19,8 +19,8 @@ class ArticleController extends Controller
     {
         $request->validate([
             'author_id'  => 'required|exists:authors,id',
-            'title'  => 'required|max:255|escape',
-            'url'  => 'required|unique:articles|escape',
+            'title'  => 'required|max:255',
+            'url'  => 'required|unique:articles',
             'content'  => 'required',
         ]);
 
