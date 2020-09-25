@@ -50,7 +50,9 @@ class ArticlePage extends Component {
                   tableData={articles.articles}
                 />
               </div>
-            ) : null}
+            ) : (
+              <div className="row">Articles not found</div>
+            )}
           </div>
         </div>
       </Pagetemplate>

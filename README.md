@@ -33,8 +33,22 @@ php artisan serve
 
 ## API Documentation
 
+for prettier view
+
 npm i -g swagger
 swagger project edit
+
+GET /api/article : get all articles
+GET /api/article/article_id : get article by id
+POST /api/article : create article
+PUT /api/article/article_id : update article
+DELETE /api/article/article_id : delete article
+
+GET /api/author : get all authors
+GET /api/author/author_id : get author by id
+POST /api/author : create author
+PUT /api/author/author_id : update author
+DELETE /api/author/author_id : delete author
 
 ## Run the database backup daily
 
